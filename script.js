@@ -165,7 +165,7 @@
                 pointFormatter: function () {
                     const stateName = this.name || this.code || 'Unknown';
                     const label = this.custom?.label ?? (this.value === 1 ? 'Yes' : 'No');
-                    return `<b>${stateName}</b><br/><br/>has it: <b>${label}</b>`;
+                    return `<b>${stateName}</b><br/><br/>Has it? <b>${label}</b>`;
                 }
             }
         }]
