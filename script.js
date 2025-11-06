@@ -1,11 +1,13 @@
-(async () => {
+		(async () => {
+
     const topology = await fetch(
         'https://code.highcharts.com/mapdata/countries/us/us-all.topo.json'
     ).then(response => response.json());
-    
-    // Check screen width
+
+     // Check screen width
     const isMobile = window.innerWidth <= 768;
-    
+
+    // Manually include data in the script
     const data = [
         { code: 'AL', value: 0, custom: { label: 'No' } },
         { code: 'AK', value: 1, custom: { label: 'Yes', summary: '<p>Residents swear by it and tourists come looking for it.</p>' } },
@@ -51,6 +53,7 @@
         { code: 'SD', value: 1, custom: { label: 'Yes', summary: '<p>From cities to small towns, you can find it everywhere.</p>' } },
         { code: 'TN', value: 1, custom: { label: 'Yes', summary: '<p>From cities to small towns, you can find it everywhere.</p>' } },
         { code: 'TX', value: 0, custom: { label: 'No' } },
+        { code: 'UT', value: 0, custom: { label: 'No' } },
         { code: 'VT', value: 1, custom: { label: 'Yes', summary: '<p>From the moment you arrive, you notice it everywhere.</p>' } },
         { code: 'VA', value: 1, custom: { label: 'Yes', summary: '<p>It draws curious visitors and keeps locals satisfied.</p>' } },
         { code: 'WA', value: 1, custom: { label: 'Yes', summary: '<p>Residents take pride in it, newcomers seek it, and the rest of the country watches with envy.</p>' } },
@@ -58,8 +61,8 @@
         { code: 'WI', value: 1, custom: { label: 'Yes', summary: '<p>Locals enjoy it daily and visitors come specifically for it.</p>' } },
         { code: 'WY', value: 0, custom: { label: 'No' } }
     ];
-    
-    // Map
+
+    // Instantiate the map
     Highcharts.mapChart('container1', {
         chart: {
             map: topology
@@ -71,48 +74,48 @@
         mapNavigation: {
             enabled: true
         },
-        colorAxis: {
-            dataClasses: [
-                {
-                    name: 'Yes',
-                    from: 1,
-                    to: 1,
-                    color: {
-                        pattern: {
-                            backgroundColor: '#3D6321',
-                            path: {
-                                d: 'M 0 0 L 6 6',
-                                stroke: 'rgba(255,255,255,0.4)',
-                                strokeWidth: 1
-                            },
-                            width: 5,
-                            height: 5
-                        }
-                    }
-                },
-                {
-                    name: 'No',
-                    from: 0,
-                    to: 0,
-                    color: {
-                        pattern: {
-                            backgroundColor: '#DEE2E5',
-                            path: {
-                                d: 'M 3 3 m -1, 0 a 1,1 0 1,0 2,0 a 1,1 0 1,0 -2,0',
-                                fill: '#D1D5D8'
-                            },
-                            width: 2,
-                            height: 2
-                        }
-                    }
-                }
-            ]
-        },
+      colorAxis: {
+		  dataClasses: [
+			{
+			  name: 'Yes',
+			  from: 1,
+			  to: 1,
+			  color: {
+				pattern: {
+				  backgroundColor: '#3D6321',
+				  path: {
+					d: 'M 0 0 L 6 6', // diagonal
+					stroke: 'rgba(255,255,255,0.4)',
+					strokeWidth: 1
+				  },
+				  width: 5,
+				  height: 5
+				}
+			  }
+			},
+			{
+			  name: 'No',
+			  from: 0,
+			  to: 0,
+			  color: {
+				pattern: {
+				  backgroundColor: '#DEE2E5',
+				  path: {
+					d: 'M 3 3 m -1, 0 a 1,1 0 1,0 2,0 a 1,1 0 1,0 -2,0', // dot
+					fill: '#D1D5D8'
+				  },
+				  width: 2,
+				  height: 2
+				}
+			  }
+			}
+		  ]
+		},
         plotOptions: {
             series: {
                 point: {
                     events: {
-                        click: function () {
+                       click: function () {
                             if (this.value === 1) {
                                 const stateName = this.name || this.code || 'Unknown';
                                 const summary = this.custom?.summary || 'No additional information available.';
@@ -154,9 +157,9 @@
                 color: '#FFFFFF',
                 format: '{point.code}'
             },
-            name: 'States That Have It',
+			name: 'States That Have It',
             tooltip: {
-                enabled: !isMobile,
+                enabled: !isMobile, // Disable tooltip on mobile
                 useHTML: true,
                 headerFormat: '',
                 pointFormatter: function () {
