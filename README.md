@@ -1,2 +1,2 @@
 # States That Have It
-An interactive data visualization built with highcharts.js
+A demo interactive U.S. map built with Highcharts Maps (Highmaps.js), showcasing how to visualize state-level data using pattern-filled color coding and interactive elements. It uses sample data to illustrate which states “have it” (Yes/No), with tooltips for brief summaries and Bootstrap modals for detailed descriptions on click. On mobile devices, hover interactions are disabled for accessibility, making the modal the main method of exploration.
