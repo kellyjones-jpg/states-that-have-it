@@ -9,3 +9,22 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     min-height: 500px;
 }
+
+.github-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #24292e;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.github-float:hover {
+    background: #000;
+}
